@@ -7,6 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Modal from "./Modal";
 import { useDispatch } from "react-redux";
 import { setCustomer } from "../../redux/slices/customerSlice";
+import { FaRobot } from "react-icons/fa";
 
 const BottomNav = () => {
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ const BottomNav = () => {
       >
         <MdOutlineReorder className="inline mr-2" size={20} /> <p>Orders</p>
       </button>
+
       <button
         onClick={() => navigate("/tables")}
         className={`flex items-center justify-center font-bold ${
@@ -63,9 +65,16 @@ const BottomNav = () => {
       >
         <MdTableBar className="inline mr-2" size={20} /> <p>Tables</p>
       </button>
-      <button className="flex items-center justify-center font-bold text-[#ababab] w-[300px]">
-        <CiCircleMore className="inline mr-2" size={20} /> <p>More</p>
-      </button>
+      
+     <button
+      onClick={() => navigate("/smart_serve")}
+      className={`flex items-center justify-center font-bold ${
+         isActive("/smart_serve") ? "text-[#f5f5f5] bg-[#343434]" : "text-[#ababab]"
+      } w-[300px] rounded-[20px]`}
+     >
+     <FaRobot className="inline mb-0.5 mr-2" size={20} /> <p>Smart_Serve</p>
+     </button>
+
 
       <button
         disabled={isActive("/tables") || isActive("/menu")}
